@@ -1,0 +1,3 @@
+# Products
+module ProductsHelper
+end

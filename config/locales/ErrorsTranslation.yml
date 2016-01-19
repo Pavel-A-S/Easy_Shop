@@ -1,0 +1,96 @@
+ru:
+  activerecord: 
+    attributes:
+      user:
+        name: "Имя"
+        email: "Почта"
+        phone: "Номер телефона"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+      product:
+        name: "Имя"
+        price: "Цена"
+        description: "Описание"
+      order:
+        customer_name: "Имя"
+        phone: "Номер телефона"
+        description: "Описание"
+        email: "Почта"
+      category:
+        name: "Название"
+    errors:
+      models:
+        product:
+          attributes:
+            name:
+              blank: "- должно присутствовать."
+              too_long: "- должно быть не более 48 символов"
+            description:
+              blank: "- должно присутствовать."
+              too_long: "- должно быть не более 840 символов"
+            price:
+              blank: "- должна присутствовать."
+              not_a_number: "- проверьте значение."
+              greater_than_or_equal_to: "- проверьте значение"
+        order:
+          attributes:
+            customer_name:
+              blank: "- должно присутствовать."
+              too_long: "- должно быть не более 48 символов"
+            phone:
+              blank: "- должен присутствовать."
+              too_long: "- должен быть не более 48 символов"
+            description:
+              blank: "- должно присутствовать."
+              too_long: "- должно быть не более 840 символов"
+            email:
+              too_long: "- должна быть не более 48 символов"
+        user:
+          attributes:
+            name:
+              blank: "- должно присутствовать."
+              too_long: "- должно быть не более 48 символов"
+            email:
+              blank: "- должна присутствовать."
+              too_long: "- должна быть не более 48 символов"
+            phone:
+              blank: "- должен присутствовать."
+              too_long: "- должен быть не более 48 символов"
+            password:
+              blank: "- должен присутствовать."
+              too_short: "- должен быть не меньше 8 символов"
+            password_confirmation:
+              confirmation: "- должно совпадать с паролем"
+        category:
+          attributes:
+            name:
+              blank: "- должно присутствовать."
+              too_long: "- должно быть не более 48 символов"
+en:
+  activerecord: 
+    attributes:
+      product:
+        name: "Name"
+        price: "Price"
+        description: "Description"
+    errors:
+      models:
+        product:
+          attributes:
+            name:
+              blank: "must be present."
+            description:
+              blank: "must be present."
+            price:
+              blank: "must be present."
+              not_a_number: "- check the value"
+
+
+
+
+
+
+
+
+
+

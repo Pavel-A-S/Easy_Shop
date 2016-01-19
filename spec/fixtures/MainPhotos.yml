@@ -1,0 +1,9 @@
+photo_one:
+  id: 1
+  photo: ""
+  main_description_id: 1
+
+photo_two:
+  id: 2
+  photo: ""
+  main_description_id: 2

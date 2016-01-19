@@ -1,0 +1,88 @@
+<div class='row'>
+  <div class='col-md-12'>
+    <div class="page-header">
+      <h3 class='text-center'>
+        <%= t(:all_customer_orders) %>
+      </h3>
+    </div>
+  </div>
+</div>
+
+<div class='row'>
+  <div class="col-md-12 text-center">
+    <%= will_be_numbered(orders_path, @orders[:pages]) %>
+  </div>
+</div>
+
+<div class='row'>
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="text-center">
+            <%= t(:order_number) %>
+          </th>
+          <th class="text-center">
+            <%= t(:user_name) %>
+          </th>
+          <th class="text-center">
+            <%= t(:phone) %>
+          </th>
+          <th class="text-center">
+            <%= t(:email) %>
+          </th>
+          <th class="text-center">
+            <%= t(:description) %>
+          </th>
+          <th class="text-center">
+            <%= t(:status_description) %>
+          </th>
+          <th class="text-center">
+            <%= t(:order_status) %>
+          </th>
+          <th class="text-center">
+            <%= t(:action) %>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @orders[:objects].each do |o| %>
+          <tr>
+            <td>
+              <%= link_to "#{o.order_name}", order_path(o) %>
+            </td>
+            <td>
+              <%= o.customer_name %>
+            </td>
+            <td>
+              <%= o.phone %>
+            </td>
+            <td>
+              <%= o.email %>
+            </td>
+            <td class="long_words_breaker">
+              <%= o.description %>
+            </td>
+            <td class="long_words_breaker">
+              <%= o.status_description %>
+            </td>
+            <td>
+              <%= t("status_#{o.status}") %>
+            </td>
+            <td>
+              <%= link_to t(:show), order_ordered_products_path(o) %>
+              <br>
+              <% if o.await? %>
+                <%= link_to t(:edit), edit_order_path(o) %>
+                <br>
+                <%= link_to t(:delete), order_path(o), method: :delete,
+                                        data: {confirm: t(:really_question)} %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

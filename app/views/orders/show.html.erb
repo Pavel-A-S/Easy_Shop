@@ -1,0 +1,61 @@
+<div class='row'>
+  <div class='col-md-12'>
+    <div class="page-header">
+      <h3 class='text-center'>
+        <%= t(:order_title) %>
+      </h3>
+    </div>
+  </div>
+</div>
+
+<div class='row'>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><b><%= @order.order_name %></b></h3>
+      </div>
+      <div class="panel-body">
+
+        <dl>
+          <dt>
+            <%= t(:user_name).to_s + ":" %>
+          </dt>
+          <dd>
+            <%= @order.customer_name %>
+          </dd>
+          <dt>
+            <%= t(:phone).to_s + ":" %>
+          </dt>
+          <dd>
+            <%= @order.phone %>
+          </dd>
+          <dt>
+            <%= t(:email).to_s + ":" %>
+          </dt>
+          <dd>
+            <%= @order.email %>
+          </dd>
+          <dt>
+            <%= t(:description).to_s + ":" %>
+          </dt>
+          <dd class="long_words_breaker">
+            <%= @order.description %>
+          </dd>
+          <dt>
+            <%= t(:status_description).to_s + ":" %>
+          </dt>
+          <dd class="long_words_breaker">
+            <%= @order.status_description %>
+          </dd>
+          <dt>
+            <%= t(:order_status).to_s + ":" %>
+          </dt>
+          <dd>
+            <%= t("status_#{@order.status}") %>
+          </dd>
+        </dl>
+
+      </div>
+    </div>
+  </div>
+</div>

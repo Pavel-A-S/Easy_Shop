@@ -1,0 +1,40 @@
+#----------------------------- Fill and Processing -----------------------------
+fill_opened_order:
+  id: 1
+  customer_id: opened_order
+  status: <%= Order.statuses["opened"] %>
+
+fill_not_opened_order:
+  id: 2
+  customer_id: not_opened_order
+  status: <%= Order.statuses["delivery"] %>
+
+#------------------------------------- Show ------------------------------------
+
+show_customer_order:
+  id: 3
+  customer_login: customer@test.com
+
+show_not_customer_order:
+  id: 4
+  customer_login: not_customer@test.com
+
+#------------------------------ Edit and Update --------------------------------
+
+customer_awaited_order:
+  id: 5
+  customer_login: customer@test.com
+  status: <%= Order.statuses["await"] %>
+
+not_customer_awaited_order:
+  id: 6
+  customer_login: not_customer@test.com
+  status: <%= Order.statuses["await"] %>
+
+customer_not_awaited_order:
+  id: 7
+  customer_name: "Test"
+  phone: "12345678"
+  description: "Test"
+  customer_login: customer@test.com
+  status: <%= Order.statuses["opened"] %>

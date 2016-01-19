@@ -1,0 +1,3 @@
+# Access
+module AccessHelper
+end

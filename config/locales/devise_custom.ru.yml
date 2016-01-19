@@ -1,0 +1,14 @@
+
+en:
+  devise_hello: "Hello"
+  devise_introduction: "Someone has requested a link to change your password. You can do this through the link below."
+  devise_change_password: "Change my password"
+  devise_else_propose_1: "If you didn't request this, please ignore this email."
+  devise_else_propose_2: "Your password won't change until you access the link above and create a new one."
+
+ru:
+  devise_hello: "Привет"
+  devise_introduction: "Кто-то запросил ссылку для смены пароля. Вы можете сменить пароль пройдя по ссылки ниже."
+  devise_change_password: "Сменить мой пароль"
+  devise_else_propose_1: "Если вы не запрашивали ссылку для смены пароля, то просто проигнорируйте это письмо."
+  devise_else_propose_2: "Ваш пароль не будет изменён до тех пор пока вы не пройдёте по ссылке и не введёте новый."

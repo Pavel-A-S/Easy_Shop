@@ -1,0 +1,73 @@
+<div class='row'>
+  <div class='col-md-12'>
+    <div class="page-header">
+      <h3 class='text-center'>
+        <%= t(:users) %>
+      </h3>
+    </div>
+  </div>
+</div>
+
+<div class='row'>
+  <div class="col-md-12 text-center">
+    <%= will_be_numbered(access_index_path, @users[:pages]) %>
+  </div>
+</div>
+
+<div class='row'>
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="text-center">
+            <%= t(:id) %>
+          </th>
+          <th class="text-center">
+            <%= t(:user_name) %>
+          </th>
+          <th class="text-center">
+            <%= t(:phone) %>
+          </th>
+          <th class="text-center">
+            <%= t(:email) %>
+          </th>
+          <th class="text-center">
+            <%= t(:status) %>
+          </th>
+          <th class="text-center">
+            <%= t(:action) %>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody class="long_words_breaker">
+        <% @users[:objects].each do |u| %>
+          <tr>
+            <td>
+              <%= u.id %>
+            </td>
+            <td>
+              <%= u.name %>
+            </td>
+            <td>
+              <%= u.phone %>
+            </td>
+            <td>
+              <%= u.email %>
+            </td>
+            <td>
+              <%= t("#{u.status}") %>
+            </td>
+            <td>
+              <%= link_to t(:delete), access_path(u),
+                                      method: :delete,
+                                      data: {confirm: t(:really_question)} %>
+              <br>
+              <%= link_to t(:edit), edit_access_path(u) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

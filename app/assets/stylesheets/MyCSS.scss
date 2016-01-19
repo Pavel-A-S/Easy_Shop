@@ -1,0 +1,149 @@
+@import "bootstrap";
+
+//-------------------------------- information block -------------------------ok
+
+.InformationBlock {
+  //padding: 15px;
+  width: 100%;
+}
+
+.AlertInformation {
+  font: 14pt forum;
+  color: red;
+  text-align: center;
+}
+
+.CommonInformation {
+  font: 14pt forum;
+  color: green;
+  text-align: center;
+}
+
+//------------------------------- Title links (small) ------------------------ok
+.Title_link_new {
+  font-size: 75%;
+}
+
+//---------------------------------- Font --------------------------------------
+
+.font-size-1 {
+//  font-size: 20px;
+}
+
+//---------------------------------- Colors ----------------------------------ok
+
+.MyMainMenuColor {
+//  background-color: #eee;
+}
+
+//---------------------------------- Image -----------------------------------ok
+
+.MyImageSize {
+  margin: auto;
+  max-width: 250px;
+  max-height: 250px;
+}
+
+.MyImageFrame {
+  margin: auto;
+  text-align: center;
+}
+
+//---------------------------------- Google map ------------------------------ok
+
+.map {
+  width: 100%;
+  height: 500px;
+}
+
+//------------------------------------ Search --------------------------------ok
+
+.MySearch {
+  margin: 15px 0px 15px 0px;
+}
+
+//----------------------------------------------------------------------------ok
+
+.preheader {
+  margin-top: 10px;
+}
+
+body, html{
+  height:100%;
+}
+
+.wrapper {
+  margin-bottom: 5px;
+  min-height:100%;
+}
+
+.MyFooter {
+  width: 100%;
+  height: 35px;
+  padding: 5px;
+}
+
+//------------------------------- for categories -----------------------------ok
+
+.CategoriesWrapper {
+  display: inline-block;
+  //  border: 1px solid black;
+  margin: 5px auto 0px auto;
+  padding: 0px;
+  width: 100%;//300px;
+  text-align: center;
+  vertical-align: top;
+  div {
+    display: none;
+  }
+}
+
+.MyCheckbox {
+  display: none;
+}
+
+.MyCheckbox:checked + div {
+  > div {
+    display: inline-block;
+    text-align: left;
+    margin-left: 20px;
+    border: 0px;
+  }
+}
+
+//-------------------------------- for forms ---------------------------------ok
+
+.field_with_errors {
+  @extend .has-error;
+}
+
+//----------------------------- long-words-breaker ---------------------------ok
+
+.long_words_breaker {
+  //word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+
+  /* Non standard for webkit */
+  word-break: break-word;
+
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+//--------------------------------- for errors -------------------------------ok
+
+.block_for_errors {
+  padding: 10px 5px 10px 0px;
+  margin: 0px 0px 20px 0px;
+  border: 2px dashed red;
+  font: 12pt forum;
+  color: red;
+  ul {
+    text-align: left;
+    list-style-type: circle;
+    margin: 5px;
+  }
+}
+

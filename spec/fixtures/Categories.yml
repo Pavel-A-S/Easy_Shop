@@ -1,0 +1,14 @@
+main_category:
+  id: 1
+  name: "Main Category"
+  category_type: "Section name"
+ending_category:
+  id: 2
+  name: "Ending category"
+  category_type: "For search"
+  category_id: 1
+second_ending_category:
+  id: 3
+  name: "Second ending category"
+  category_type: "For search"
+  category_id: 1

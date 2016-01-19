@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mall</title>
+  <%= stylesheet_link_tag    'application', media: 'all',
+                                            'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <!-- Google map -->
+
+  <%= yield :google_map %>
+
+</head>
+<body data-no-turbolink=true>
+
+  <div class="container wrapper">
+
+  <!-- It is header -->
+
+    <div class='row'>
+      <div class='col-md-12'>
+        <div class="preheader">
+        </div>
+        <header>
+          <nav>
+            <div class="panel panel-default">
+              <div class="panel-body text-center MyMainMenuColor">
+                <div class='container-fluid'>
+
+                  <div class='row'>
+                    <div class='col-md-12'>
+                      <div class="page-header">
+                        <h1 class='text-center'>
+                          <%= t(:easy_shop) %>
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class='row'>
+                    <div class='col-md-12'>
+
+                      <%= link_to t(:about_us_link), root_path,
+                                                     class: "btn btn-default" %>
+
+                      <%= link_to t(:products_link),
+                                  products_path,
+                                  class: "btn btn-default" %>
+
+                      <% if user_signed_in? %>
+                        <%= link_to t(:all_orders_link),
+                                    orders_path,
+                                    class: "btn btn-default" %>
+                        <%= link_to t(:user_profile_link),
+                                    access_path(current_user.id),
+                                    class: "btn btn-default" %>
+
+                        <% if current_user.admin? %>
+
+
+                        <%= link_to t(:users_link), access_index_path,
+                                    class: "btn btn-default" %>
+
+
+                        <%= link_to t(:categories_link),
+                                    categories_path,
+                                    class: "btn btn-default" %>
+
+                        <% end %>
+                      <% end %>
+
+                      <%= link_to t(:basket_link),
+                                  basket_path,
+                                  class: "btn btn-default" %>
+
+                      <% if user_signed_in? %>
+                        <%= link_to t(:logout_link),
+                                    destroy_user_session_path,
+                                    :method => :delete,
+                                    class: "btn btn-default" %>
+                      <% else %>
+                        <%= link_to t(:login_link),
+                                    new_user_session_path,
+                                    class: "btn btn-default" %>
+                      <% end %>
+
+                      <div class="btn-group">
+
+                        <button type="button"
+                                class="btn btn-success dropdown-toggle"
+                                data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                          <%= t(:language) %>
+                          <span class="caret"></span>
+                        </button>
+
+                        <ul class="dropdown-menu">
+                          <li>
+                            <%= link_to t(:english), url_for(language: "en") %>
+                          </li>
+                          <li>
+                            <%= link_to t(:russian), url_for(language: "ru") %>
+                          </li>
+                        </ul>
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class='row'>
+
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                      <%= form_tag products_path,
+                                   method: :get,
+                                   class: 'MySearch' do %>
+
+                        <div class="input-group">
+                          <%= text_field_tag :search, params[:search],
+                                                      class: 'form-control' %>
+                          <span class="input-group-btn">
+                            <%= submit_tag t(:search),
+                                class: "btn btn-default" %>
+                          </span>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="col-md-2"></div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <!-- For Flash -->
+
+    <div class='row'>
+      <div class='col-md-12'>
+        <div class = 'InformationBlock' id = 'InformationBlock'>
+          <% flash.each do |key, value| %>
+            <% if key == 'alert' %>
+              <div class = 'AlertInformation'>
+                <%  if value.kind_of?(Array) %>
+                  <% value.each do |x| %>
+                    <%= x %>
+                    <br>
+                  <% end %>
+                <% else %>
+                  <%= value %>
+                <% end %>
+              </div>
+            <% elsif key == 'message' %>
+              <div class = 'CommonInformation'>
+                <%= value %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-12'>
+        <%= yield %>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="MyFooter bg-success">
+    <p class = "text-center">
+      <%= 'pavel.a.s.1985@gmail.com' %>
+    </p>
+  </footer>
+
+  <%= javascript_tag "$('.dropdown-toggle').dropdown()" %>
+
+</body>
+</html>

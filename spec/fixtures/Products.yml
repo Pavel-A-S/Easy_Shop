@@ -1,0 +1,8 @@
+product:
+  id: 96
+  name: "Test_Product"
+  description: "Test"
+  category_id: "none"
+  count: "1"
+  price: "2"
+  photo: none
