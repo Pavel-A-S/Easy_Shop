@@ -1,0 +1,18 @@
+div class='row'
+  div class='col-md-12'
+    div class='page-header'
+      h3 class='text-center'
+        = t(:edit_paragraf)
+
+div class='row'
+  div class='col-md-10 col-md-offset-1 text-center'
+    = form_for @main_description do |f|
+      div class='form-group'
+        = f.label :title, t(:title)
+        = f.text_field :title, class: 'form-control'
+
+      div class='form-group'
+        = f.label :description, t(:description)
+        = f.text_area :description, class: 'form-control', rows: '6'
+
+      = f.submit t(:create), class: 'btn btn-primary'

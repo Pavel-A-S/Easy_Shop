@@ -1,0 +1,31 @@
+.row
+  .col-md-12
+    .page-header
+      %h3.text-center
+        = t(:leave_information_request)
+
+.row
+  .col-md-12.text-center
+    = render partial: 'shared/form_errors', locals: { object: @order }
+
+.row
+  .col-md-12
+    = form_for @order, url: processing_orders_path do |f|
+
+      .form-group
+        = f.label :customer_name, t(:user_name)
+        = f.text_field :customer_name, class: 'form-control'
+
+      .form-group
+        = f.label :phone, t(:phone)
+        = f.text_field :phone, class: 'form-control'
+
+      .form-group
+        = f.label :email, t(:email)
+        = f.email_field :email, class: 'form-control'
+
+      .form-group
+        = f.label :description, t(:description)
+        = f.text_area :description, class: 'form-control'
+
+      = f.submit t(:send), class: 'btn btn-primary'

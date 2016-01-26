@@ -1,0 +1,47 @@
+div class='row'
+  div class='col-md-12'
+    div class='page-header'
+      h3 class='text-center'
+        = t(:ordered_products_count)
+
+div class='row'
+  div class='col-md-12'
+    table class='table table-striped'
+      thead
+        tr
+          th class='text-center'
+            = t(:image)
+          th class='text-center'
+            = t(:name)
+          th class='text-center'
+            = t(:description)
+          th class='text-center'
+            = t(:price)
+          th class='text-center'
+            = t(:count)
+
+      tbody
+        tr
+          td
+            = image_tag @ordered_product.product.photo.url,
+                         class: 'img-rounded MyImageSize'
+          td
+            = "#{@ordered_product.product.name}"
+          td class='long_words_breaker'
+            = @ordered_product.product.description
+          td
+            = @ordered_product.product.price
+
+          td class='text-center'
+            = form_for(@ordered_product,
+                       url: ordered_product_path(@ordered_product.id),
+                       :html => { class: 'form-inline MyFormSize' }) do |f|
+
+              div class='form-group'
+                = f.label :count, class: 'sr-only'
+                = f.number_field :count,
+                                 min: '1',
+                                 class: 'form-control text-center'
+              br
+              br
+              = f.submit t(:save), class: 'btn btn-primary'

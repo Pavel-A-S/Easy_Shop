@@ -1,0 +1,29 @@
+div class='row'
+  div class='col-md-12'
+    div class='page-header'
+      h3 class='text-center'
+        = t(:choice)
+
+div class='row'
+  div class='col-md-12'
+    table class='table table-striped'
+      thead
+        tr
+          th
+            = t(:leave_information)
+      tbody
+        tr
+          td
+            = link_to t(:easy_way), fill_new_order_path
+
+div class='row'
+  div class='col-md-12'
+    table class='table table-striped'
+      thead
+        tr
+          th
+            = t(:register_or_login)
+      tbody
+        tr
+          td
+            = link_to t(:right_way), new_user_session_path

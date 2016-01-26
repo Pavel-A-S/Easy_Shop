@@ -1,0 +1,62 @@
+.row
+  .col-md-12
+    .page-header
+      %h3.text-center
+        = t(:all_orders)
+
+.row
+  .col-md-12.text-center
+    = will_be_numbered(orders_path, @orders[:pages])
+
+.row
+  .col-md-12
+    %table.table.table-striped
+      %thead
+        %tr
+          %th.text-center
+            = t(:order_number)
+          %th.text-center
+            = t(:user_name)
+          %th.text-center
+            = t(:phone)
+          %th.text-center
+            = t(:email)
+          %th.text-center
+            = t(:customer_login)
+          %th.text-center
+            = t(:description)
+          %th.text-center
+            = t(:status_description)
+          %th.text-center
+            = t(:order_status)
+          %th.text-center
+            = t(:action)
+
+      %tbody
+        - @orders[:objects].each do |o|
+          %tr
+            %td
+              = link_to "#{o.order_name}", order_path(o)
+            %td
+              = o.customer_name
+            %td
+              = o.phone
+            %td
+              = o.email
+            %td
+              = o.customer_login
+            %td.long_words_breaker
+              = o.description
+            %td.long_words_breaker
+              = o.status_description
+            %td
+              = t("status_#{o.status}")
+            %td
+              = link_to t(:show), order_ordered_products_path(o)
+              %br
+              = link_to t(:edit), edit_order_path(o)
+
+
+
+
+

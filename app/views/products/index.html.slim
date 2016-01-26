@@ -1,0 +1,131 @@
+div class='row'
+  div class='col-md-12'
+    div class='page-header'
+      h3 class='text-center'
+        = t(:products_title)
+        - if user_signed_in? && \
+              (current_user.admin? || current_user.manager?)
+          br
+          span class='Title_link_new'
+            = link_to t(:add_product), new_product_path
+
+div class='row'
+  / columns are auto generated
+
+  - a = 'first time'
+  - b = 0
+  - e = 1
+
+  - @categories.each do |c|
+
+    / if it isn't first time and privews element is deeper than current
+    - if a != 'first time' && a >= c[:deep]
+      - (a - c[:deep] + 1).times do
+        </div>
+
+    / if it isn't first time and current element is first in list
+    - if a != 'first time' && c[:deep] == 0
+      </div></div></div></div></div>
+
+      / Each three elements must have separate block
+      - if e % 3 == 0
+        div class='col-md-12'
+      - e+=1
+
+    / Set open tags if the first element of list
+    - if c[:deep] == 0
+      <div class='col-md-4 text-center'>
+        <div class='panel panel-default'>
+          <div class='panel-body text-center'>
+            <div class='container-fluid'>
+              <div class='row'>
+
+    / Set open tags
+    = check_box_tag "make_me_#{b}", value = '1', checked = false,
+                                                 class: 'MyCheckbox'
+    <div class='CategoriesWrapper'>
+    = label_tag "make_me_#{b}", class: 'checkbox_label' do
+      - if c[:object][:category_type] == 'For search'
+        = link_to(c[:object][:name], products_path(category: c[:object][:id]))
+      - else
+        = c[:object][:name]
+
+    / Set variables: count of tags id and previews element deep
+    - b+=1
+    - a = c[:deep]
+
+    / Set close tags if the last element of list
+    - if c == @categories.last
+      - (c[:deep] + 1 ).times do
+        </div>
+
+      </div></div></div></div></div>
+
+div class='row'
+  div class='col-md-12 text-center'
+    = will_be_numbered(products_path, @products[:pages], @search)
+
+table class='table table-striped'
+  thead
+    tr
+      th class='text-center'
+        = t(:image)
+      th class='text-center'
+        = t(:name)
+      th class='text-center'
+        = t(:description)
+      th class='text-center'
+        = t(:category)
+      th class='text-center'
+        = t(:price)
+      - if user_signed_in? && !current_user.customer?
+        th class='text-center'
+          = t(:count)
+        th class='text-center'
+          = t(:action)
+
+      th class='text-center'
+        = t(:order)
+
+  tbody
+    - @products[:objects].each do |p|
+      tr
+        td
+          = image_tag p.photo.url, class: 'img-rounded MyImageSize'
+        td
+          = link_to "#{p.name}", product_path(p)
+        td class='long_words_breaker'
+          = p.description
+        td class='text-center'
+          - name = @all_categories \
+                    .select { |object| object[:id] == p.category_id }
+          = name.first.name if name.first
+        td class='text-center'
+          = p.price
+
+        - if user_signed_in? && !current_user.customer?
+          td class='text-center'
+            = p.count
+          td class='text-center'
+            = link_to t(:edit), edit_product_path(p)
+            br
+            = link_to t(:delete), product_path(p),
+                                  method: :delete,
+                                  data: { confirm: 'Realy?' }
+
+        td class='text-center'
+
+          = form_for(@ordered_product,
+                     url: product_ordered_products_path(p.id),
+                     :html => { class: 'form-inline MyFormSize' }) do |f|
+            div class='form-group'
+              = f.label :count, class: 'sr-only'
+              = f.number_field :count,
+                               value: '1',
+                               min: '1',
+                               class: 'form-control text-center'
+            br
+            br
+            = f.submit t(:add_to_basket), class: 'btn btn-primary'
+
+

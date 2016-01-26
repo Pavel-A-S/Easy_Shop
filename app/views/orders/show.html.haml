@@ -1,0 +1,39 @@
+.row
+  .col-md-12
+    .page-header
+      %h3.text-center
+        = t(:order_title)
+
+.row
+  .col-md-8.col-md-offset-2
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          %b= @order.order_name
+
+      .panel-body
+        %dl
+          %dt
+            = t(:user_name).to_s + ':'
+          %dd
+            = @order.customer_name
+          %dt
+            = t(:phone).to_s + ':'
+          %dd
+            = @order.phone
+          %dt
+            = t(:email).to_s + ':'
+          %dd
+            = @order.email
+          %dt
+            = t(:description).to_s + ':'
+          %dd.long_words_breaker
+            = @order.description
+          %dt
+            = t(:status_description).to_s + ':'
+          %dd.long_words_breaker
+            = @order.status_description
+          %dt
+            = t(:order_status).to_s + ':'
+          %dd
+            = t("status_#{@order.status}")

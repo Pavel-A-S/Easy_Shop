@@ -1,0 +1,53 @@
+div class='row'
+  div class='col-md-12'
+    div class='page-header'
+      h3 class='text-center'
+        = "#{@product.name}"
+        br
+        span class='Title_link_new'
+          = link_to t(:all_products), products_path
+
+table class='table table-striped'
+  thead
+    tr
+      th class='text-center'
+        = t(:image)
+      th class='text-center'
+        = t(:name)
+      th class='text-center'
+        = t(:description)
+      th class='text-center'
+        = t(:category)
+      th class='text-center'
+        = t(:price)
+      th class='text-center'
+        = t(:count)
+
+      - if user_signed_in?
+        th class='text-center'
+          = t(:action)
+
+  tbody
+    tr
+      td
+        = image_tag @product.photo.url, class: 'img-rounded MyImageSize'
+      td
+        = "#{@product.name}"
+      td class='long_words_breaker'
+        = @product.description
+      td class='text-center'
+        - name = Category \
+                 .select { |object| object[:id] == @product.category_id }
+        = name.first.name if name.first
+      td class='text-center'
+        = @product.price
+      td class='text-center'
+        = @product.count
+      - if user_signed_in?
+        td class='text-center'
+          => link_to t(:edit), edit_product_path(@product)
+          = link_to t(:delete), product_path(@product),
+                                method: :delete,
+                                data: { confirm: t(:really_question) }
+
+

@@ -1,0 +1,6 @@
+- if object && object.errors.any?
+  div class= 'block_for_errors'
+    = "#{t(:all_errors)}: #{object.errors.count}"
+    ul
+      - object.errors.full_messages.each do |error|
+        li = error

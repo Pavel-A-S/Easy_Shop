@@ -33,7 +33,13 @@ gem 'devise'
 gem 'pundit'
 
 # For diagrams
-gem "rails-erd"
+gem 'rails-erd'
+
+# For slim
+gem 'slim'
+
+# For haml
+gem 'haml'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

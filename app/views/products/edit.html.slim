@@ -1,0 +1,42 @@
+div class='row'
+  div class='col-md-12'
+    div class='page-header'
+      h3 class='text-center'
+        = t(:change_product_title)
+
+div class='row'
+  div class='col-md-12 text-center'
+    = render partial: 'shared/form_errors', locals: { object: @product }
+
+div class='row'
+  div class='col-md-12'
+    = form_for @product do |f|
+      div class='form-group'
+        = f.label :name, t(:name)
+        = f.text_field :name, class: 'form-control'
+
+      div class='form-group'
+        = f.label :description, t(:description)
+        = f.text_area :description, class: 'form-control', rows: '6'
+
+      div class='form-group'
+        => f.label :category_id, t(:category)
+        = f.select :category_id, Category.where('category_type = ?',
+                                                'For search').pluck(:name, :id),
+                                 include_blank: 'None',
+                                 class: 'form-control'
+
+      div class='form-group'
+        = f.label :count, t(:count)
+        = f.number_field :count, class: 'form-control'
+
+      div class='form-group'
+        = f.label :price, t(:price)
+        = f.number_field :price, step: 'any', class: 'form-control'
+
+      div class='form-group'
+        = f.label :photo, t(:image)
+        = f.file_field :photo, class: 'form-control',
+                               accept: 'image/jpeg, image/gif, image/png'
+
+      = f.submit t(:update), class: 'btn btn-primary'

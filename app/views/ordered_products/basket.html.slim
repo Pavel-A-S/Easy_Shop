@@ -1,0 +1,46 @@
+div class='row'
+  div class='col-md-12'
+    div class='page-header'
+      h3 class='text-center'
+        = t(:products_in_basket)
+        br
+        span class='Title_link_new'
+          = link_to t(:make_an_order), choice_path
+
+div class='row'
+  div class='col-md-12'
+    table class='table table-striped'
+      thead
+        tr
+          th class='text-center'
+            = t(:image)
+          th class='text-center'
+            = t(:name)
+          th class='text-center'
+            = t(:description)
+          th class='text-center'
+            = t(:price)
+          th class='text-center'
+            = t(:count)
+          th class='text-center'
+            = t(:action)
+
+      tbody
+        - @ordered_products.each do |op|
+          tr
+            td
+              = image_tag op.product.photo.url, class: 'img-rounded MyImageSize'
+            td
+              = "#{op.product.name}"
+            td class='long_words_breaker'
+              = op.product.description
+            td class='text-center'
+              = op.product.price
+            td class='text-center'
+              = op.count
+            td
+              = link_to t(:delete), ordered_product_path(op),
+                                    method: :delete,
+                                    data: { confirm: t(:really_question) }
+              br
+              = link_to t(:edit), edit_ordered_product_path(op)
