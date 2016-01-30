@@ -6,6 +6,8 @@ The main purpose was to create small universal shop which I could use as
 a pattern for future development.
 
 ## "Easy shop" features
+[![Build Status](https://travis-ci.org/Pavel-A-S/Easy_Shop.svg?branch=master)](https://travis-ci.org/Pavel-A-S/Easy_Shop)
+
 The shop includes below features:
 
 - Authentication and authorization system (3 levels: customer, manager and
